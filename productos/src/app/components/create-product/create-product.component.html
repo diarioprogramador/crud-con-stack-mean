@@ -1,0 +1,47 @@
+<div class="container mt-5">
+  <div class="col-lg-6 offset-lg-3">
+    <div class="card">
+      <div class="card-body text-center">
+        <span class="title">{{ title | uppercase }}</span>
+        <form class="mt-3" [formGroup]="productForm" (ngSubmit)="addProduct()">
+          <div class="mb-3">
+            <input type="text" formControlName="name" class="form-control form-control-lg" placeholder="Product name">
+            <div class="text-danger"
+              *ngIf="productForm.get('name')?.hasError('required') && productForm.get('name')?.touched">
+              <span>The name is required</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input type="text" formControlName="category" class="form-control form-control-lg" placeholder="Category">
+            <div class="text-danger"
+              *ngIf="productForm.get('category')?.hasError('required') && productForm.get('category')?.touched">
+              <span>The category is required</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input type="number" formControlName="price" class="form-control form-control-lg" placeholder="Price">
+            <div class="text-danger"
+              *ngIf="productForm.get('price')?.hasError('required') && productForm.get('price')?.touched">
+              <span>The price is required</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input type="text" formControlName="status" class="form-control form-control-lg" placeholder="Status">
+            <div class="text-danger"
+              *ngIf="productForm.get('status')?.hasError('required') && productForm.get('status')?.touched">
+              <span>The status is required</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <button routerLink="/" class="btn btn-secondary btn-lg float-start">Back</button>
+            <button type="submit" [disabled]="productForm.invalid"
+              class="btn btn-success btn-lg float-end">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
